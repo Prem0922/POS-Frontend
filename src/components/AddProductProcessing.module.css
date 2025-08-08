@@ -1,0 +1,106 @@
+/* .bg {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #181c24 0%, #23243a 100%);
+  overflow: hidden;
+} */
+
+.formBox {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background: #f7f7f7;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.contentBox {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.total {
+  color: #2456b3;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 32px;
+  text-align: center;
+  text-shadow: none;
+}
+.total span {
+  color: #3476f7;
+}
+
+.instruction {
+  color: #222;
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 48px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.cancelButton {
+  margin-top: 32px;
+  padding: 28px 64px;
+  font-size: 2rem;
+  font-weight: 800;
+  border-radius: 0;
+  border: none;
+  background: #e3e8f7;
+  color: #2456b3;
+  box-shadow: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  outline: none;
+}
+.cancelButton:hover, .cancelButton:focus {
+  background: #c7d2fe;
+  color: #181818;
+}
+
+.nextArrow {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  background: #3476f7;
+  border: none;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0;
+  filter: none;
+  transition: filter 0.18s, transform 0.18s, background 0.18s;
+}
+.nextArrow:hover, .nextArrow:focus {
+  filter: none;
+  transform: scale(1.08);
+  background: #2456b3;
+}
+.nextArrow svg {
+  width: 36px;
+  height: 36px;
+  display: block;
+} 

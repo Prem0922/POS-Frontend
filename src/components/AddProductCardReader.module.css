@@ -1,0 +1,180 @@
+/* .bg {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #181c24 0%, #23243a 100%);
+  overflow: hidden;
+} */
+
+.formBox {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background: #f7f7f7;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.centerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+}
+
+.nfcIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+.nfcText {
+  color: #2456b3;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 2px;
+  letter-spacing: 2px;
+  text-shadow: none;
+}
+
+.slotWrapper {
+  position: relative;
+  width: 700px;
+  height: 260px;
+  margin-bottom: 64px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.cardSlotGlow {
+  display: none;
+}
+
+.cardSlot {
+  position: absolute;
+  top: 52px;
+  left: 0;
+  width: 100%;
+  height: 36px;
+  background: #f7faff;
+  border-radius: 18px;
+  border: 1.5px solid #e3e8f7;
+  box-shadow: none;
+  z-index: 2;
+}
+
+.cardInsert {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%) rotateX(8deg);
+  width: 320px;
+  height: 200px;
+  background: linear-gradient(120deg, #e0e7ef 60%, #bfc7d6 100%);
+  border-radius: 0;
+  box-shadow: 0 12px 48px #00cfff44, 0 4px 16px #181c24;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+  border: 2.5px solid #bfc7d6;
+}
+
+.chip {
+  width: 80px;
+  height: 48px;
+  background: linear-gradient(120deg, #e0e7ef 60%, #bfc7d6 100%);
+  border-radius: 0;
+  margin-top: 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px #bfc7d6;
+}
+
+.stripe {
+  width: 220px;
+  height: 24px;
+  background: #23243a;
+  border-radius: 0;
+  margin-bottom: 24px;
+}
+
+.cardText {
+  color: #23243a;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-top: 24px;
+  opacity: 0.7;
+}
+
+.instruction {
+  color: #2456b3;
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 64px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-shadow: none;
+}
+.buttonGroup {
+  display: flex;
+  gap: 48px;
+  margin-top: 56px;
+  width: 100%;
+  justify-content: center;
+}
+.actionButton {
+  background: #e3e8f7;
+  color: #2456b3;
+  border: none;
+  border-radius: 0;
+  padding: 36px 80px;
+  font-size: 2rem;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background 0.2s, color 0.2s;
+  min-width: 240px;
+  margin: 0 24px;
+}
+.actionButton:hover, .actionButton:focus {
+  background: #c7d2fe;
+  color: #181818;
+  box-shadow: none;
+}
+.tapCardImg {
+  display: block;
+  margin: 0 auto 48px auto;
+  width: 400px;
+  height: auto;
+  max-width: 100%;
+}
+
+.loadingText {
+  color: #3476f7;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  text-align: center;
+} 

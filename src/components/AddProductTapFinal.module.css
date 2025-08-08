@@ -1,0 +1,75 @@
+.formBox {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.contentBox {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.heading {
+  color: #2456b3;
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 48px;
+  text-align: center;
+  text-shadow: none;
+}
+
+.subtext {
+  color: #2456b3;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 48px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.successMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.successText {
+  color: #3476f7;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.tapCardImg {
+  display: block;
+  margin: 0 auto 48px auto;
+  width: 340px;
+  height: auto;
+  max-width: 100%;
+}
+
+.loadingText {
+  color: #3476f7;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 16px 0;
+  text-align: center;
+} 

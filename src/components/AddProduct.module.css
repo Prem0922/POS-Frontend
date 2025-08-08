@@ -1,0 +1,223 @@
+/* .stylishBg {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  background: none;
+  overflow: hidden;
+} */
+
+.formBox {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background: #f7f7f7;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.title {
+  color: #2456b3;
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin-bottom: 48px;
+  text-align: center;
+  text-shadow: none;
+}
+
+.cardList {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.optionCard {
+  background: rgba(255,255,255,0.95);
+  border: 1.5px solid #e3e8f7;
+  border-radius: 22px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: box-shadow 0.22s, border 0.22s, transform 0.18s;
+  box-shadow: 0 2px 12px rgba(52, 118, 247, 0.07);
+  min-height: 120px;
+  overflow: hidden;
+  position: relative;
+}
+
+.optionCard:focus, .optionCard:hover {
+  border: 1.5px solid #4f8cff;
+  box-shadow: 0 8px 32px rgba(52, 118, 247, 0.13);
+  transform: translateY(-2px) scale(1.025);
+  z-index: 2;
+}
+
+.accentBar {
+  width: 100px;
+  height: 100%;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 22px 0 0 22px;
+  margin-right: 48px;
+  box-shadow: 0 2px 8px rgba(52, 118, 247, 0.10);
+}
+
+.optionText {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.optionTitle {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #181818;
+  margin-bottom: 2px;
+  letter-spacing: 0.1px;
+}
+
+.optionDesc {
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 2px;
+}
+
+.arrow {
+  font-size: 2.6rem;
+  color: #b0b6c6;
+  margin-left: 48px;
+  user-select: none;
+  font-weight: 300;
+  transition: color 0.18s;
+}
+
+.optionCard:focus .arrow, .optionCard:hover .arrow {
+  color: #4f8cff;
+}
+
+/* CardReader content within main area */
+.cardReaderContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.cardReaderCard {
+  background: #fff;
+  border-radius: 0;
+  border: none;
+  padding: 60px 40px;
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: none;
+}
+
+.cardReaderTitle {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #2456b3;
+  margin: 0 0 24px 0;
+  text-align: center;
+}
+
+.cardReaderInstruction {
+  font-size: 2rem;
+  color: #222;
+  margin: 0 0 32px 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.cardIconWrapper {
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.cardIcon {
+  font-size: 5rem;
+  color: #ccc;
+}
+
+.cardReaderNextStep {
+  font-size: 1.5rem;
+  color: #2456b3;
+  margin: 32px 0 0 0;
+  text-align: center;
+  font-weight: 700;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 56px;
+  width: 100%;
+}
+.cancelButton, .proceedButton {
+  min-width: 180px;
+  min-height: 64px;
+  font-size: 1.4rem;
+  padding: 20px 40px;
+  border-radius: 14px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.cancelButton {
+  background: #e3e8f7;
+  color: #2456b3;
+}
+.cancelButton:hover {
+  background: #c7d2fe;
+  color: #181818;
+}
+.proceedButton {
+  background: #3476f7;
+  color: #fff;
+}
+.proceedButton:hover {
+  background: #2456b3;
+  color: #fff;
+}
+
+.tapCardImg {
+  display: block;
+  margin: 0 auto 48px auto;
+  width: 340px;
+  height: 240px;
+  max-width: 100%;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 32px;
+}
+
+.loadingText {
+  color: #3476f7;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  text-align: center;
+} 

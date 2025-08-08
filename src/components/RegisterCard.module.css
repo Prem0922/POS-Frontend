@@ -1,0 +1,169 @@
+/* .bg {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #181c24 0%, #23243a 100%);
+  overflow: hidden;
+} */
+
+.formBox {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  background: #f7f7f7;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 48px 0 0 0;
+  animation: none;
+}
+
+.title {
+  color: #2456b3;
+  font-size: 2.1rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+  text-align: left;
+  text-shadow: none;
+}
+
+.subtitle {
+  color: #888;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 24px;
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+.inputGroup {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+}
+.inputGroup label {
+  color: #222;
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+.cardNumberHint {
+  color: #00cfff;
+  font-size: 0.95rem;
+  font-weight: 400;
+  margin-left: 8px;
+  opacity: 0.7;
+}
+.input {
+  padding: 32px 40px;
+  font-size: 1.7rem;
+  border-radius: 20px;
+  border: 2.5px solid #e3e8f7;
+  background: #fff;
+  color: #181818;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  outline: none;
+  box-shadow: 0 6px 24px rgba(52, 118, 247, 0.10);
+  transition: border 0.2s, box-shadow 0.2s;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  min-height: 90px;
+}
+.input:focus, .input:hover {
+  border: 2.5px solid #3476f7;
+  box-shadow: 0 12px 40px rgba(52, 118, 247, 0.18);
+}
+
+select.input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #fff;
+  color: #181818;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 40px;
+  width: 100%;
+}
+.buttonGroup button {
+  min-width: 180px;
+  min-height: 64px;
+  font-size: 1.4rem;
+  padding: 20px 40px;
+}
+
+.cancelButton {
+  background: #e3e8f7;
+  color: #2456b3;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.cancelButton:hover, .cancelButton:focus {
+  background: #c7d2fe;
+  color: #181818;
+}
+
+.registerButton {
+  background: #3476f7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.registerButton:hover, .registerButton:focus {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+}
+
+.statusMessage {
+  margin-top: 16px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.success {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.error {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+} 

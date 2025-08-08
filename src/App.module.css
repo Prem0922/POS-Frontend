@@ -1,0 +1,14 @@
+.appContainer {
+  display: flex;
+  height: 100vh;
+  background: #f7f8fa;
+}
+
+.mainContent {
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+} 

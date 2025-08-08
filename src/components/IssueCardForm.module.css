@@ -1,0 +1,141 @@
+/* .stylishBg {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  background: linear-gradient(120deg, #181c24 0%, #23243a 100%);
+  overflow: hidden;
+} */
+
+.glassCardSection {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+}
+
+.sectionTitle {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #2456b3;
+  margin-bottom: 96px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-shadow: none;
+}
+
+.cardList {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  width: 100%;
+  max-width: 1200px;
+  min-width: 800px;
+  align-items: center;
+}
+
+.optionCard {
+  background: #fff;
+  border-radius: 32px;
+  border: none;
+  box-shadow: 0 6px 32px rgba(30,41,59,0.10);
+  display: flex;
+  align-items: center;
+  padding: 80px 96px 80px 80px;
+  min-height: 240px;
+  width: 100%;
+  max-width: 1200px;
+  min-width: 800px;
+  cursor: pointer;
+  transition: box-shadow 0.18s, border 0.18s, transform 0.15s, background 0.18s;
+  position: relative;
+  color: #181818;
+  font-weight: 700;
+  font-size: 2rem;
+  overflow: hidden;
+}
+
+.optionCard:focus, .optionCard:hover {
+  box-shadow: 0 12px 48px rgba(52, 118, 247, 0.13);
+  background: #f4f5f7;
+  color: #181818;
+  transform: translateY(-4px) scale(1.035);
+  z-index: 2;
+}
+
+.optionCard:last-child {
+  border: 2.5px solid #e3e8f7;
+  box-shadow: none;
+}
+
+.optionCard:last-child:focus, .optionCard:last-child:hover {
+  border: 2.5px solid #ffb86c;
+  box-shadow: 0 6px 24px #ffb86c99;
+}
+
+.accentBar {
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 36px;
+  margin-right: 72px;
+  background: #e3e8f7;
+  box-shadow: none;
+  font-size: 5.2rem;
+}
+
+.optionCard:last-child .accentBar {
+  background: #ffb86c;
+  box-shadow: none;
+}
+
+.cardIcon {
+  color: #2456b3;
+  font-size: 6rem;
+  filter: none;
+}
+
+.optionText {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.optionTitle {
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #2456b3;
+  margin-bottom: 18px;
+  letter-spacing: 0.2px;
+  text-shadow: none;
+}
+
+.optionDesc {
+  font-size: 1.7rem;
+  color: #444;
+  margin-top: 6px;
+  text-shadow: none;
+}
+
+.arrow {
+  font-size: 4.2rem;
+  color: #3476f7;
+  margin-left: 96px;
+  user-select: none;
+  font-weight: 300;
+  transition: color 0.18s;
+}
+
+.optionCard:last-child .arrow {
+  color: #ffb86c;
+} 

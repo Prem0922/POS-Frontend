@@ -1,0 +1,128 @@
+.sidebar {
+  width: 420px;
+  background: linear-gradient(135deg, #f7faff 60%, #e0e7ff 100%);
+  height: 100vh;
+  box-shadow: 2px 0 16px rgba(52, 118, 247, 0.07);
+  padding-top: 36px;
+  padding-bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-right: 1.5px solid #e3e8f7;
+  overflow-y: auto;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #3476f7;
+  padding: 0 0 24px 56px;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+}
+
+.divider {
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, #e3e8f7 0%, #f7faff 100%);
+  margin: 0 auto 24px auto;
+  border-radius: 2px;
+}
+
+.navWrapper {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  padding: 32px 0 32px 72px;
+  color: #3476f7;
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border-radius 0.18s;
+  border-radius: 32px 0 0 32px;
+  margin-bottom: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  outline: none;
+  min-height: 72px;
+}
+
+.navItem:focus {
+  outline: none;
+}
+
+.navItem:hover {
+  background: #eaf1ff;
+  color: #2456b3;
+  border-radius: 32px 0 0 32px;
+}
+
+.activeNavItem {
+  background: linear-gradient(90deg, #e0e7ff 60%, #f7faff 100%);
+  color: #2456b3;
+  font-weight: 700;
+  border-left: 6px solid #3476f7;
+  border-radius: 32px 0 0 32px;
+  box-shadow: 0 2px 12px rgba(52, 118, 247, 0.08);
+}
+
+.icon {
+  margin-right: 32px;
+  font-size: 2.1em;
+  min-width: 54px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoutButton {
+  display: flex;
+  align-items: center;
+  background: #ff5252;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s;
+  width: 90%;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  box-shadow: 0 2px 8px rgba(255, 82, 82, 0.08);
+}
+
+.logoutButton:hover {
+  background: #d32f2f;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 82, 82, 0.18);
+}
+
+.logoutButton i {
+  margin-right: 8px;
+} 

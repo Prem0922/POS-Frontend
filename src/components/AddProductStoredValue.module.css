@@ -1,0 +1,138 @@
+/* .bg {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #181c24 0%, #23243a 100%);
+} */
+
+.formBox {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background: #f7f7f7;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.title {
+  color: #2456b3;
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin-bottom: 48px;
+  text-align: center;
+  text-shadow: none;
+}
+
+.form {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label {
+  color: #222;
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  width: 100%;
+  text-align: left;
+}
+
+.input {
+  width: 100%;
+  padding: 32px 40px;
+  font-size: 1.7rem;
+  border-radius: 0;
+  border: 2.5px solid #e3e8f7;
+  background: #fff;
+  color: #181818;
+  margin-bottom: 24px;
+  outline: none;
+  box-shadow: none;
+  transition: border 0.2s, box-shadow 0.2s;
+  min-height: 90px;
+}
+.input:focus, .input:hover {
+  border: 2.5px solid #3476f7;
+  box-shadow: 0 12px 40px rgba(52, 118, 247, 0.18);
+}
+
+.optionsRow {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  width: 100%;
+  justify-content: center;
+}
+.amountButton, .amountButtonSelected {
+  background: #e3e8f7;
+  color: #2456b3;
+  border: 2px solid #e3e8f7;
+  border-radius: 0;
+  padding: 20px 40px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.amountButtonSelected {
+  background: #3476f7;
+  color: #fff;
+  border: 2px solid #3476f7;
+}
+.amountButton:hover, .amountButton:focus {
+  background: #c7d2fe;
+  color: #181818;
+  border: 2px solid #2456b3;
+}
+
+.orText {
+  color: #888;
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+}
+
+.continueButton {
+  background: #3476f7;
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 24px 48px;
+  font-size: 1.7rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(52, 118, 247, 0.10);
+  transition: background 0.2s, color 0.2s;
+  min-width: 200px;
+  min-height: 72px;
+  margin-top: 24px;
+}
+.continueButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.continueButton:hover:not(:disabled), .continueButton:focus:not(:disabled) {
+  background: #2456b3;
+  color: #fff;
+}
+
+.status {
+  margin-top: 24px;
+  color: #2456b3;
+  font-size: 1.3rem;
+  text-align: center;
+  font-weight: 700;
+} 

@@ -1,0 +1,164 @@
+.formBox {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background: #f7f7f7;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.contentBox {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.total {
+  color: #2456b3;
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+  text-align: center;
+  text-shadow: none;
+}
+.total span {
+  color: #3476f7;
+}
+
+.instruction {
+  color: #222;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 32px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.slotWrapper {
+  position: relative;
+  width: 320px;
+  height: 140px;
+  margin-bottom: 48px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.slotGlow {
+  display: none;
+}
+
+.slot {
+  position: absolute;
+  top: 52px;
+  left: 0;
+  width: 100%;
+  height: 36px;
+  background: #e3e8f7;
+  border-radius: 18px;
+  border: 1.5px solid #3476f7;
+  box-shadow: none;
+  z-index: 2;
+}
+
+.bill {
+  position: absolute;
+  top: 72px;
+  left: 50%;
+  transform: translateX(-50%) rotateX(8deg);
+  width: 180px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.billArt {
+  width: 180px;
+  height: 80px;
+  border-radius: 8px;
+  background: #e3e8f7;
+  box-shadow: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.billArt:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 120px;
+  height: 40px;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/5/5a/US_$1_bill_obverse_series_2009.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+  transform: translate(-50%, -50%);
+  opacity: 0.85;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+.cancelButton {
+  margin-top: 24px;
+  padding: 18px 44px;
+  font-size: 1.4rem;
+  font-weight: 800;
+  border-radius: 0;
+  border: none;
+  background: #e3e8f7;
+  color: #2456b3;
+  box-shadow: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  outline: none;
+}
+.cancelButton:hover, .cancelButton:focus {
+  background: #c7d2fe;
+  color: #181818;
+}
+
+.nextArrow {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  background: #3476f7;
+  border: none;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0;
+  filter: none;
+  transition: filter 0.18s, transform 0.18s, background 0.18s;
+}
+.nextArrow:hover, .nextArrow:focus {
+  filter: none;
+  transform: scale(1.08);
+  background: #2456b3;
+}
+.nextArrow svg {
+  width: 36px;
+  height: 36px;
+  display: block;
+} 

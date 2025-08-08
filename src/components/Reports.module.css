@@ -1,0 +1,72 @@
+.formBox {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.title {
+  color: #2456b3;
+  font-size: 3.8rem;
+  font-weight: 900;
+  margin-bottom: 64px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.summaryBox {
+  width: 100%;
+  max-width: 900px;
+  background: #f7f7f7;
+  border-radius: 0;
+  border: none;
+  padding: 64px 80px;
+  margin-bottom: 64px;
+  font-size: 2.6rem;
+  color: #2456b3;
+  font-weight: 900;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.label {
+  color: #2456b3;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.doneButton {
+  width: 100%;
+  max-width: 900px;
+  background: #3476f7;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  padding: 40px 0;
+  font-size: 2.4rem;
+  font-weight: 900;
+  cursor: pointer;
+  margin-bottom: 32px;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: none;
+  display: block;
+}
+.doneButton:hover, .doneButton:focus {
+  background: #2456b3;
+  color: #fff;
+} 

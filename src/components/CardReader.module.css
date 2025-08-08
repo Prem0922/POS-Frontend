@@ -1,0 +1,126 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #232323;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.header {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.headerText {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+  text-align: left;
+}
+
+.mainCard {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  padding: 40px 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 12px 0;
+  text-align: left;
+  width: 100%;
+}
+
+.instruction {
+  font-size: 1rem;
+  color: #000;
+  margin: 0 0 30px 0;
+  text-align: left;
+  width: 100%;
+}
+
+.cardIconWrapper {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.cardIcon {
+  font-size: 4rem;
+  color: #ccc;
+}
+
+.nextStep {
+  font-size: 1rem;
+  color: #000;
+  margin: 20px 0 0 0;
+  text-align: left;
+  width: 100%;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 16px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.cancelButton {
+  flex: 1;
+  padding: 14px 24px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  color: #666;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancelButton:hover {
+  background: #e8e8e8;
+  border-color: #ccc;
+}
+
+.proceedButton {
+  flex: 1;
+  padding: 14px 24px;
+  background: #3476f7;
+  border: 1px solid #3476f7;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.proceedButton:hover {
+  background: #2456b3;
+  border-color: #2456b3;
+} 

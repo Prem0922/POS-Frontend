@@ -1,0 +1,90 @@
+.formBox {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.title {
+  color: #2456b3;
+  font-size: 3.6rem;
+  font-weight: 900;
+  margin-bottom: 56px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.searchForm {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.label {
+  color: #2456b3;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  align-self: flex-start;
+}
+
+.input {
+  width: 100%;
+  font-size: 2.2rem;
+  padding: 36px 36px;
+  border-radius: 0;
+  border: 1.5px solid #e3e8f7;
+  background: #f7f7f7;
+  color: #181818;
+  margin-bottom: 32px;
+  outline: none;
+  box-shadow: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.input:focus, .input:hover {
+  border: 1.5px solid #3476f7;
+  box-shadow: none;
+}
+
+.searchButton, .doneButton {
+  width: 100%;
+  max-width: 600px;
+  background: #3476f7;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  padding: 36px 0;
+  font-size: 2rem;
+  font-weight: 900;
+  cursor: pointer;
+  margin-bottom: 32px;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: none;
+  display: block;
+}
+.searchButton:hover, .searchButton:focus, .doneButton:hover, .doneButton:focus {
+  background: #2456b3;
+  color: #fff;
+}
+
+.balanceLabel {
+  color: #131314;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  text-align: center;
+} 
