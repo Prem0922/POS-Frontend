@@ -96,8 +96,8 @@ export async function getAllCustomers() {
 
 export async function getRandomCard() {
   try {
-    // Use the dedicated /cards/random endpoint
-    const res = await fetch(`${BASE_URL}/cards/random`, {
+    // Fallback: use the /cards/ endpoint and pick a random one
+    const res = await fetch(`${BASE_URL}/cards/`, {
       headers: withApiKeyHeaders(),
     });
     
@@ -105,11 +105,19 @@ export async function getRandomCard() {
       throw new Error(`HTTP error! status: ${res.status}`);
     }
     
-    const randomCard = await res.json();
+    const cards = await res.json();
+    
+    if (!cards || cards.length === 0) {
+      throw new Error('No cards found in database');
+    }
+    
+    // Select a random card from the array
+    const randomIndex = Math.floor(Math.random() * cards.length);
+    const randomCard = cards[randomIndex];
     
     return {
       id: randomCard.id,
-      card_number: randomCard.card_number,
+      card_number: randomCard.id,
       balance: randomCard.balance,
       status: randomCard.status,
       type: randomCard.type
