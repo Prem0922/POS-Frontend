@@ -1,6 +1,6 @@
 // Central API utility for POS to interact with CRM backend
-// Updated to use local CRM backend for testing
-const BASE_URL = "http://127.0.0.1:8000";
+// Updated to use deployed CRM backend on Render
+const BASE_URL = "https://crm-n577.onrender.com";
 const API_KEY = "mysecretkey";
 
 function withApiKeyHeaders(headers = {}) {
@@ -96,8 +96,8 @@ export async function getAllCustomers() {
 
 export async function getRandomCard() {
   try {
-    // Use the working /cards/ endpoint instead of /cards/random
-    const res = await fetch(`${BASE_URL}/cards/`, {
+    // Use the dedicated /cards/random endpoint
+    const res = await fetch(`${BASE_URL}/cards/random`, {
       headers: withApiKeyHeaders(),
     });
     
@@ -105,19 +105,11 @@ export async function getRandomCard() {
       throw new Error(`HTTP error! status: ${res.status}`);
     }
     
-    const cards = await res.json();
-    
-    if (!cards || cards.length === 0) {
-      throw new Error('No cards found in database');
-    }
-    
-    // Select a random card from the array
-    const randomIndex = Math.floor(Math.random() * cards.length);
-    const randomCard = cards[randomIndex];
+    const randomCard = await res.json();
     
     return {
       id: randomCard.id,
-      card_number: randomCard.id,
+      card_number: randomCard.card_number,
       balance: randomCard.balance,
       status: randomCard.status,
       type: randomCard.type
