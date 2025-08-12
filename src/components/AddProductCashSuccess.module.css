@@ -34,19 +34,82 @@
   text-shadow: none;
 }
 
-.checkIcon {
-  margin-bottom: 48px;
-  filter: none;
-  width: 120px;
-  height: 120px;
+.loadedText {
+  color: #666;
+  font-size: 1.4rem;
+  margin-bottom: 32px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.productCard {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 24px 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.ticketInfo {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e3e8f7;
 }
-.checkIcon svg {
-  width: 100px;
-  height: 100px;
+
+.ticketName {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
+
+.ticketPrice {
+  color: #3476f7;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.cardIdRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardIdRow span:first-child {
+  color: #666;
+  font-size: 1rem;
+}
+
+.cardId {
+  color: #3476f7;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f9fa;
+  padding: 16px 24px;
+  border-radius: 8px;
+  margin: 24px 0;
+  width: 100%;
+  max-width: 400px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.totalRow span:last-child {
+  color: #3476f7;
+  font-weight: 700;
+}
+
+
 
 .reminder {
   color: #2456b3;
@@ -74,4 +137,24 @@
 .doneButton:hover, .doneButton:focus {
   background: #c7d2fe;
   color: #181818;
+} 
+
+.printButton {
+  padding: 28px 64px;
+  font-size: 2rem;
+  font-weight: 800;
+  border-radius: 0;
+  border: none;
+  background: #3476f7;
+  color: #fff;
+  box-shadow: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  outline: none;
+  margin-top: 32px;
+}
+
+.printButton:hover, .printButton:focus {
+  background: #2456b3;
+  color: #fff;
 } 

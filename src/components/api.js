@@ -1,6 +1,6 @@
 // Central API utility for POS to interact with CRM backend
-// Updated to use CRM backend on Render
-const BASE_URL = "https://crm-n577.onrender.com";
+// Updated to use local CRM backend for testing
+const BASE_URL = "http://127.0.0.1:8000";
 const API_KEY = "mysecretkey";
 
 function withApiKeyHeaders(headers = {}) {
@@ -8,7 +8,7 @@ function withApiKeyHeaders(headers = {}) {
 }
 
 export async function issueCard(card) {
-  const res = await fetch(`${BASE_URL}/cards/issue`, {
+  const res = await fetch(`${BASE_URL}/api/cards/issue`, {
     method: "POST",
     headers: withApiKeyHeaders({ "Content-Type": "application/json" }),
     body: JSON.stringify(card),
@@ -17,7 +17,7 @@ export async function issueCard(card) {
 }
 
 export async function addProduct(cardId, product, value = 0) {
-  const res = await fetch(`${BASE_URL}/cards/${cardId}/products`, {
+  const res = await fetch(`${BASE_URL}/api/cards/${cardId}/products`, {
     method: "POST",
     headers: withApiKeyHeaders({ "Content-Type": "application/json" }),
     body: JSON.stringify({ product, value }),
@@ -25,11 +25,20 @@ export async function addProduct(cardId, product, value = 0) {
   return res.json();
 }
 
-export async function reloadCard(cardId, amount) {
-  const res = await fetch(`${BASE_URL}/cards/${cardId}/reload`, {
+export async function createTrip(tripData) {
+  const res = await fetch(`${BASE_URL}/trips/`, {
     method: "POST",
     headers: withApiKeyHeaders({ "Content-Type": "application/json" }),
-    body: JSON.stringify({ amount }),
+    body: JSON.stringify(tripData),
+  });
+  return res.json();
+}
+
+export async function reloadCard(cardId, amount) {
+  const res = await fetch(`${BASE_URL}/api/cards/${cardId}/reload`, {
+    method: "POST",
+    headers: withApiKeyHeaders({ "Content-Type": "application/json" }),
+    body: JSON.stringify({ "amount": amount }),
   });
   return res.json();
 }
@@ -127,6 +136,41 @@ export async function getAllCardTypes() {
   ];
 }
 
+export async function getRandomOperator() {
+  try {
+    // Get operators from CRM backend
+    const res = await fetch(`${BASE_URL}/operators/`, {
+      headers: withApiKeyHeaders(),
+    });
+    
+    if (!res.ok) {
+      // Fallback to static operators if API fails
+      const fallbackOperators = ['Metro Transit', 'City Express', 'Urban Connect', 'Regional Transport'];
+      const randomIndex = Math.floor(Math.random() * fallbackOperators.length);
+      return fallbackOperators[randomIndex];
+    }
+    
+    const operators = await res.json();
+    
+    if (!operators || operators.length === 0) {
+      // Fallback to static operators if no data
+      const fallbackOperators = ['Metro Transit', 'City Express', 'Urban Connect', 'Regional Transport'];
+      const randomIndex = Math.floor(Math.random() * fallbackOperators.length);
+      return fallbackOperators[randomIndex];
+    }
+    
+    // Select a random operator from the array
+    const randomIndex = Math.floor(Math.random() * operators.length);
+    return operators[randomIndex];
+  } catch (error) {
+    console.error('getRandomOperator error:', error);
+    // Fallback to static operators if API call fails
+    const fallbackOperators = ['Metro Transit', 'City Express', 'Urban Connect', 'Regional Transport'];
+    const randomIndex = Math.floor(Math.random() * fallbackOperators.length);
+    return fallbackOperators[randomIndex];
+  }
+}
+
 export async function simulateCardTap(cardId, location, deviceId, transitMode, direction) {
   const res = await fetch(`${BASE_URL}/simulate/cardTap`, {
     method: "POST",
@@ -141,3 +185,5 @@ export async function simulateCardTap(cardId, location, deviceId, transitMode, d
   });
   return res.json();
 } 
+
+ 

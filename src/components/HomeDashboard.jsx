@@ -37,9 +37,9 @@ const dashboardCards = [
 ];
 
 function HomeDashboard({ onMenuSelect }) {
-  const handleReportsClick = async () => {
-    // Show static dummy summary
-    alert(`Total Cards: 1000\nTotal Customers: 500\nTotal Trips: 2000\nTotal Balance: $12345.67`);
+  const handleReportsClick = () => {
+    // Navigate to Reports page instead of showing popup
+    onMenuSelect('Reports');
   };
 
   return (

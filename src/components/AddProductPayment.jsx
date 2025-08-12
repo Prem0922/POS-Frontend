@@ -6,17 +6,18 @@ import { useNavigate, useLocation } from 'react-router-dom';
 function AddProductPayment() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { cardNumber, selectedProduct } = location.state || {};
+  const { cardNumber, selectedProduct, startTime } = location.state || {};
 
   const handleBack = () => {
-    navigate('/add-product-types', { state: { cardNumber } });
+    navigate('/add-product-types', { state: { cardNumber, startTime } });
   };
 
   const handleCreditCard = () => {
     navigate('/add-product-cardreader', { 
       state: { 
         cardNumber: cardNumber,
-        selectedProduct: selectedProduct 
+        selectedProduct: selectedProduct,
+        startTime: startTime
       } 
     });
   };
@@ -25,7 +26,8 @@ function AddProductPayment() {
     navigate('/add-product-cash', { 
       state: { 
         cardNumber: cardNumber,
-        selectedProduct: selectedProduct 
+        selectedProduct: selectedProduct,
+        startTime: startTime
       } 
     });
   };

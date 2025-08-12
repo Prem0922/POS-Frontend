@@ -15,6 +15,7 @@ function RegisterCard() {
   const [customerOptions, setCustomerOptions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(null);
+  const [cardNumberError, setCardNumberError] = useState('');
 
   useEffect(() => {
     const loadData = async () => {
@@ -41,7 +42,21 @@ function RegisterCard() {
   }, []);
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    
+    if (name === 'cardId') {
+      // Validate card number length (same as Issue New Card)
+      if (value.length > 16) {
+        setCardNumberError('Card number cannot be more than 16 digits');
+        return;
+      } else if (value.length < 16 && value.length > 0) {
+        setCardNumberError('Card number must be exactly 16 digits');
+      } else {
+        setCardNumberError('');
+      }
+    }
+    
+    setForm({ ...form, [name]: value });
   };
 
   const handleCancel = () => {
@@ -50,29 +65,32 @@ function RegisterCard() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    
+    // Validate card number before submission (same as Issue New Card)
+    if (form.cardId.length !== 16) {
+      setCardNumberError('Card number must be exactly 16 digits');
+      return;
+    }
+    
     setLoading(true);
     setStatus(null);
     
     try {
-      // Validate form data
-      if (!form.cardId || !form.cardType || !form.issueDate || !form.customerId) {
-        setStatus('❌ Please fill in all required fields');
-        return;
-      }
-
-      // Prepare card data for the API
+      // Prepare card data for the API (same as Issue New Card)
       const cardData = {
         card_id: form.cardId,
         card_type: form.cardType,
         customer_id: form.customerId,
-        issue_date: form.issueDate // Already in YYYY-MM-DD format from date input
+        issue_date: form.issueDate,
+        balance: 0, // Default balance for register card
+        load_product: 'Basic Card' // Default product for register card
       };
 
-      // Call the actual CRM backend API
+      // Call the issue card API (same as Issue New Card)
       const response = await issueCard(cardData);
       
-      if (response.id) {
-        setStatus('✅ Card registered successfully!');
+      if (response.status === 'success') {
+        setStatus(`✅ Card registered successfully! Card ID: ${response.data.card_id}, Customer: ${response.data.customer_name}, Balance: $${response.data.balance}`);
         // Clear form after successful registration
         setTimeout(() => {
           setForm({
@@ -82,10 +100,11 @@ function RegisterCard() {
             customerId: '',
           });
           setStatus(null);
+          setCardNumberError('');
           navigate('/issuecard');
-        }, 2000);
+        }, 3000);
       } else {
-        setStatus('❌ Failed to register card');
+        setStatus(`❌ Failed to register card: ${response.message}`);
       }
     } catch (error) {
       console.error('Register card error:', error);
@@ -104,17 +123,19 @@ function RegisterCard() {
       <div className={styles.title}>Register Card</div>
       <div className={styles.subtitle}>Enter the details for the new transit card.</div>
       <div className={styles.inputGroup}>
-        <label htmlFor="cardId">Card ID *</label>
-        <input
-          id="cardId"
-          name="cardId"
-          type="text"
-          placeholder="Card ID"
-          value={form.cardId}
-          onChange={handleChange}
-          className={styles.input}
-          required
+        <label htmlFor="cardId">Card Number *</label>
+        <input 
+          id="cardId" 
+          name="cardId" 
+          type="text" 
+          value={form.cardId} 
+          onChange={handleChange} 
+          className={styles.input} 
+          placeholder="Enter valid card number (16 digits)"
+          maxLength={16}
+          required 
         />
+        {cardNumberError && <div className={styles.errorText}>{cardNumberError}</div>}
       </div>
       <div className={styles.inputGroup}>
         <label htmlFor="cardType">Card Type *</label>
@@ -145,7 +166,7 @@ function RegisterCard() {
         />
       </div>
       <div className={styles.inputGroup}>
-        <label htmlFor="customerId">Customer ID *</label>
+        <label htmlFor="customerId">Customer *</label>
         <select
           id="customerId"
           name="customerId"

@@ -40,8 +40,8 @@ function AddProductStoredValue() {
       // Call the actual CRM backend API
       const response = await reloadCard(cardNumber, amount);
       
-      if (response.message) {
-        setStatus(`✅ ${response.message} - New balance: $${response.new_balance}`);
+      if (response.status === 'success') {
+        setStatus(`✅ ${response.message}`);
         // Clear form after successful reload
         setTimeout(() => {
           setCardNumber('');
@@ -50,7 +50,7 @@ function AddProductStoredValue() {
           setStatus(null);
         }, 3000);
       } else {
-        setStatus('❌ Reload failed - please try again');
+        setStatus(`❌ ${response.message || 'Reload failed - please try again'}`);
       }
     } catch (error) {
       console.error('Reload error:', error);

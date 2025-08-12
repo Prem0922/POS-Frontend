@@ -59,6 +59,18 @@
   width: 100%;
   text-align: center;
 }
+
+.editIcon {
+  margin-left: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.editIcon:hover {
+  opacity: 1;
+}
 .input {
   padding: 14px 16px;
   font-size: 1.1rem;
@@ -78,6 +90,22 @@
 .input:focus, .input:hover {
   border: 1.5px solid #3476f7;
   box-shadow: 0 4px 16px rgba(52, 118, 247, 0.13);
+}
+
+.errorText {
+  color: #e53e3e;
+  font-size: 0.9rem;
+  margin-top: 4px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.helperText {
+  color: #718096;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  text-align: center;
+  font-style: italic;
 }
 
 .buttonGroup {

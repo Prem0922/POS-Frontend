@@ -31,30 +31,34 @@ function CustomerLookup() {
   return (
     <div className={styles.formBox}>
       <div className={styles.title}>Customer Lookup</div>
-      <form className={styles.searchForm} onSubmit={handleLookup} autoComplete="off">
-        <label htmlFor="customerId" className={styles.label}>Enter Customer ID</label>
-        <input
-          id="customerId"
-          name="customerId"
-          type="text"
-          placeholder="C001"
-          value={customerId}
-          onChange={e => setCustomerId(e.target.value)}
-          className={styles.input}
-          autoComplete="off"
-          required
-        />
-        <button type="submit" className={styles.searchButton} disabled={loading}>{loading ? 'Searching...' : 'Lookup'}</button>
-      </form>
+      
+      {/* Show form only if no customer found yet */}
+      {!customer && (
+        <form className={styles.searchForm} onSubmit={handleLookup} autoComplete="off">
+          <label htmlFor="customerId" className={styles.label}>Enter Customer ID</label>
+          <input
+            id="customerId"
+            name="customerId"
+            type="text"
+            placeholder="C001"
+            value={customerId}
+            onChange={e => setCustomerId(e.target.value)}
+            className={styles.input}
+            autoComplete="off"
+            required
+          />
+          <button type="submit" className={styles.searchButton} disabled={loading}>{loading ? 'Searching...' : 'Lookup'}</button>
+        </form>
+      )}
+      
       {status && <div className={styles.balanceLabel}>{status}</div>}
       {customer && (
         <div className={styles.balanceLabel} style={{marginTop: '1rem', textAlign: 'left'}}>
-          <div><b>ID:</b> {customer.id}</div>
-          <div><b>Name:</b> {customer.name}</div>
-          <div><b>Email:</b> {customer.email}</div>
-          <div><b>Phone:</b> {customer.phone}</div>
-          <div><b>Address:</b> {customer.address}</div>
-          <div><b>Joined:</b> {new Date(customer.join_date).toLocaleString()}</div>
+          <div style={{marginBottom: '8px'}}><b>ID:</b> {customer.id}</div>
+          <div style={{marginBottom: '8px'}}><b>Name:</b> {customer.name}</div>
+          <div style={{marginBottom: '8px'}}><b>Email:</b> {customer.email}</div>
+          <div style={{marginBottom: '8px'}}><b>Phone:</b> {customer.phone}</div>
+          <div style={{marginBottom: '8px'}}><b>Joined:</b> {new Date(customer.join_date).toLocaleString()}</div>
         </div>
       )}
       <button className={styles.doneButton} onClick={() => navigate('/')}>Done</button>

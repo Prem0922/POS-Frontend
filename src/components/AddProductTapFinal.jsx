@@ -7,7 +7,7 @@ import { FaCheckCircle } from 'react-icons/fa';
 function AddProductTapFinal() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { cardNumber, selectedProduct } = location.state || {};
+  const { cardNumber, selectedProduct, startTime } = location.state || {};
   const [isLoading, setIsLoading] = useState(false);
 
   const handleImageClick = async () => {
@@ -20,7 +20,8 @@ function AddProductTapFinal() {
         navigate('/add-product-tap-success', { 
           state: { 
             cardNumber: cardNumber,
-            selectedProduct: selectedProduct 
+            selectedProduct: selectedProduct,
+            startTime: startTime
           } 
         });
       } else {
@@ -49,8 +50,7 @@ function AddProductTapFinal() {
           style={{ cursor: 'pointer' }}
         />
         {isLoading && <div className={styles.loadingText}>Loading...</div>}
-        <div className={styles.heading}>Tap your card to load the product</div>
-        <div className={styles.subtext}>Hold your card near the payment reader</div>
+        <div className={styles.heading}>Tap your card on the NFC reader to load the product</div>
       </div>
     </div>
   );

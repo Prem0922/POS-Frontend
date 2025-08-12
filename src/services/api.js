@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-// Create axios instance for live CRM backend (reusing CRM authentication)
+// Create axios instance for local CRM backend (reusing CRM authentication)
 const api = axios.create({
-  baseURL: 'https://crm-n577.onrender.com',
+  baseURL: 'http://127.0.0.1:8000',
   headers: {
     'Content-Type': 'application/json',
     'x-api-key': 'mysecretkey', // Same API key as CRM
@@ -10,7 +10,7 @@ const api = axios.create({
 });
 
 // Debug: Log the base URL to confirm it's correct
-console.log('POS API Base URL:', api.defaults.baseURL);
+console.log('POS API Base URL (Local CRM):', api.defaults.baseURL);
 
 // Add request interceptor to include auth token
 api.interceptors.request.use(
@@ -49,6 +49,25 @@ export const login = async (email, password) => {
 export const signup = async (email, password, name) => {
   const response = await api.post('/auth/signup', { email, password, name });
   return response.data;
+};
+
+// Trip API functions (for POS to CRM integration)
+export const createTrip = async (tripData) => {
+  try {
+    console.log('createTrip called with data:', tripData);
+    console.log('API base URL:', api.defaults.baseURL);
+    console.log('Making POST request to /trips/');
+    
+    const response = await api.post('/trips/', tripData);
+    console.log('API response:', response);
+    return response.data;
+  } catch (error) {
+    console.error('Error creating trip:', error);
+    console.error('Error response:', error.response);
+    console.error('Error status:', error.response?.status);
+    console.error('Error data:', error.response?.data);
+    throw error;
+  }
 };
 
 export default api; 

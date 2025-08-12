@@ -134,6 +134,14 @@
   color: #181818;
 }
 
+.countdown {
+  color: #666;
+  font-size: 1rem;
+  margin: 16px 0;
+  text-align: center;
+  font-weight: 500;
+}
+
 .nextArrow {
   position: absolute;
   top: 40px;

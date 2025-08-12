@@ -166,4 +166,12 @@ select.input {
   background-color: #fef2f2;
   color: #dc2626;
   border: 1px solid #fecaca;
+}
+
+.errorText {
+  color: #e53e3e;
+  font-size: 0.9rem;
+  margin-top: 4px;
+  text-align: center;
+  font-weight: 500;
 } 

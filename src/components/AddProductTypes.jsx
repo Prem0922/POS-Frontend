@@ -28,6 +28,7 @@ function AddProductTypes() {
   const navigate = useNavigate();
   const location = useLocation();
   const cardNumber = location.state?.cardNumber;
+  const startTime = location.state?.startTime;
 
   const handleBack = () => {
     navigate('/add-product-tapcard');
@@ -49,7 +50,8 @@ function AddProductTypes() {
       navigate('/add-product-stored-value', { 
         state: { 
           cardNumber: cardNumber,
-          selectedProduct: cleanProduct 
+          selectedProduct: cleanProduct,
+          startTime: startTime
         } 
       });
     } else {
@@ -57,7 +59,8 @@ function AddProductTypes() {
       navigate('/add-product-payment', { 
         state: { 
           cardNumber: cardNumber,
-          selectedProduct: cleanProduct 
+          selectedProduct: cleanProduct,
+          startTime: startTime
         } 
       });
     }

@@ -6,7 +6,7 @@ import tapCardImg from './tap-card.jpg';
 function AddProductCardReader() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { cardNumber, selectedProduct } = location.state || {};
+  const { cardNumber, selectedProduct, startTime } = location.state || {};
   const [isLoading, setIsLoading] = useState(false);
 
   const handleImageClick = async () => {
@@ -19,7 +19,8 @@ function AddProductCardReader() {
         navigate('/add-product-processing', { 
           state: { 
             cardNumber: cardNumber,
-            selectedProduct: selectedProduct 
+            selectedProduct: selectedProduct,
+            startTime: startTime
           } 
         });
       } else {
@@ -34,7 +35,7 @@ function AddProductCardReader() {
   };
 
   const handleCancel = () => {
-    navigate('/add-product-payment', { state: { cardNumber, selectedProduct } });
+    navigate('/add-product-payment', { state: { cardNumber, selectedProduct, startTime } });
   };
 
   return (

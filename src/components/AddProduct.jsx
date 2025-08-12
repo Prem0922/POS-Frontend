@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './AddProduct.module.css';
 import { useNavigate } from 'react-router-dom';
 import tapCardImg from './tap-card.jpg';
@@ -7,6 +7,12 @@ import { addProduct, getRandomCard } from './api';
 function AddProduct() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [startTime, setStartTime] = useState(null);
+
+  // Capture start time when component mounts
+  useEffect(() => {
+    setStartTime(new Date().toISOString());
+  }, []);
 
   const handleImageClick = async () => {
     console.log('Image clicked - attempting to get random card...');
@@ -16,10 +22,18 @@ function AddProduct() {
       const randomCard = await getRandomCard();
       console.log('Random card response:', randomCard);
       if (randomCard && randomCard.card_number) {
-        // Navigate to add product types page with the random card number
+        // Navigate to add product types page with the random card number and start time
         console.log('Using random card:', randomCard.card_number);
-        console.log('Navigating to /add-product-types with state:', { cardNumber: randomCard.card_number });
-        navigate('/add-product-types', { state: { cardNumber: randomCard.card_number } });
+        console.log('Navigating to /add-product-types with state:', { 
+          cardNumber: randomCard.card_number,
+          startTime: startTime 
+        });
+        navigate('/add-product-types', { 
+          state: { 
+            cardNumber: randomCard.card_number,
+            startTime: startTime 
+          } 
+        });
       } else {
         alert('No cards found in database');
       }

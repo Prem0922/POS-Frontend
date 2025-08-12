@@ -2,12 +2,14 @@ import React from 'react';
 import styles from './AddProductPrinting.module.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+
 function AddProductPrinting() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { cardNumber, selectedProduct } = location.state || {};
+  const { cardNumber, selectedProduct, receiptId } = location.state || {};
 
-  const handleDone = () => {
+    const handleDone = async () => {
+    // Navigate to home after printing
     navigate('/');
   };
 
@@ -26,10 +28,23 @@ function AddProductPrinting() {
     }); // HH:MM format
   };
 
-  const generateReceiptId = () => {
-    // Generate a random 3-digit number for receipt ID
+  // Use receipt ID from navigation state, fallback to generated one if needed
+  const getReceiptId = () => {
+    if (receiptId) return receiptId;
+    // Fallback: generate a random 3-digit number for receipt ID
     const randomNum = Math.floor(Math.random() * 900) + 100; // 100-999
-    return `RID${randomNum.toString().padStart(2, '0')}`; // RID01, RID02, etc.
+    return `RID${randomNum}`;
+  };
+
+  // Get the correct price based on selected product
+  const getProductPrice = () => {
+    if (!selectedProduct) return 2.75;
+    switch (selectedProduct.title) {
+      case '7-Day Pass': return 25.00;
+      case '30-Day Pass': return 85.00;
+      case 'Stored Value': return 10.00;
+      default: return 2.75;
+    }
   };
 
   // Use actual data or fallback to defaults
@@ -37,7 +52,14 @@ function AddProductPrinting() {
   const product = selectedProduct?.title || 'Over Time Toskett';
   const date = getCurrentDate();
   const time = getCurrentTime();
-  const receiptId = generateReceiptId();
+  const finalReceiptId = getReceiptId();
+  
+  // Debug logging
+  console.log('=== AddProductPrinting Debug ===');
+  console.log('receiptId from state:', receiptId);
+  console.log('finalReceiptId calculated:', finalReceiptId);
+  console.log('cardNumber from state:', cardNumber);
+  console.log('selectedProduct from state:', selectedProduct);
 
   return (
     <div className={styles.formBox}>
@@ -48,7 +70,7 @@ function AddProductPrinting() {
           <div className={styles.receiptRow}><span>Product</span><span>{product}</span></div>
           <div className={styles.receiptRow}><span>Date</span><span>{date}</span></div>
           <div className={styles.receiptRow}><span>Time</span><span>{time}</span></div>
-          <div className={styles.receiptRow}><span>Receipt ID</span><span>{receiptId}</span></div>
+          <div className={styles.receiptRow}><span>Receipt ID</span><span>{finalReceiptId}</span></div>
         </div>
       </div>
       <button className={styles.doneButton} onClick={handleDone}>Done</button>

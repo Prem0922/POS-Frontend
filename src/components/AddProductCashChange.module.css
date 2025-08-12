@@ -35,16 +35,30 @@
 }
 
 .changeText {
-  color: #2456b3;
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 56px;
+  color: #666;
+  font-size: 1.2rem;
+  margin: 24px 0;
   text-align: center;
-  letter-spacing: 0.5px;
 }
 .changeText span {
   color: #3476f7;
   font-weight: 900;
+}
+
+.countdown {
+  color: #666;
+  font-size: 1rem;
+  margin: 16px 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+.status {
+  color: #3476f7;
+  font-size: 1rem;
+  margin: 16px 0;
+  text-align: center;
+  font-weight: 500;
 }
 
 .doneButton {

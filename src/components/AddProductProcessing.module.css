@@ -52,9 +52,28 @@
   color: #222;
   font-size: 2.2rem;
   font-weight: 600;
-  margin-bottom: 48px;
+  margin-bottom: 24px;
   text-align: center;
   letter-spacing: 1px;
+}
+
+.countdown {
+  color: #666;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 48px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 .cancelButton {
@@ -76,31 +95,4 @@
   color: #181818;
 }
 
-.nextArrow {
-  position: absolute;
-  top: 40px;
-  right: 40px;
-  background: #3476f7;
-  border: none;
-  border-radius: 50%;
-  width: 64px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 2;
-  padding: 0;
-  filter: none;
-  transition: filter 0.18s, transform 0.18s, background 0.18s;
-}
-.nextArrow:hover, .nextArrow:focus {
-  filter: none;
-  transform: scale(1.08);
-  background: #2456b3;
-}
-.nextArrow svg {
-  width: 36px;
-  height: 36px;
-  display: block;
-} 
+ 
