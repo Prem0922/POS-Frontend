@@ -1,127 +1,252 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  VStack,
+  Heading,
+  Text,
+  useToast,
+  Container,
+  InputGroup,
+  InputRightElement,
+  IconButton,
+  Flex,
+  useColorModeValue,
+} from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useAuth } from '../context/AuthContext';
-import { login } from '../services/api';
-import './Login.css';
+import { axios } from '../services/api';
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const { login: authLogin } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
+  const [loginError, setLoginError] = useState('');
+  const toast = useToast();
+  const { login } = useAuth();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    // Clear error when user starts typing
-    if (error) setError('');
+  // Custom colors and styles
+  const boxBg = useColorModeValue('white', 'gray.800');
+  const textColor = useColorModeValue('gray.700', 'gray.100');
+  const inputBg = useColorModeValue('white', 'gray.700');
+  const borderColor = useColorModeValue('gray.200', 'gray.600');
+
+  // Clear error when user starts typing
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    if (loginError) setLoginError('');
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    if (loginError) setLoginError('');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Validate form
-    if (!formData.email.trim() || !formData.password) {
-      setError('Please enter both email and password');
+    // Clear any previous errors
+    setLoginError('');
+    
+    // Basic form validation
+    if (!email.trim()) {
+      toast({
+        title: 'Email required',
+        description: 'Please enter your email address',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
       return;
     }
-
+    
+    if (!password.trim()) {
+      toast({
+        title: 'Password required',
+        description: 'Please enter your password',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
+    
     setIsLoading(true);
-    setError('');
 
     try {
-      const response = await login(formData.email, formData.password);
-      
-      // Successful login - redirect to POS Home screen/dashboard
-      authLogin(response.access_token, response.user_name);
-      
-    } catch (err) {
-      // Handle login failure - show error message and remain on login screen
-      if (err.response?.data?.detail) {
-        setError(err.response.data.detail);
-      } else if (err.response?.status === 401) {
-        setError('Invalid email or password');
-      } else {
-        setError('Login failed. Please try again.');
+      const response = await axios.post('/auth/login', { email, password });
+      const data = response.data;
+      if (!response.status || response.status >= 400) {
+        throw new Error(data.detail || 'Login failed');
       }
+      login(data.access_token, data.user_name);
+      toast({
+        title: 'Login successful',
+        description: `Welcome back, ${data.user_name}!`,
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      });
+    } catch (error) {
+      // Handle specific error cases
+      let errorMessage = 'An error occurred during login';
+      
+      if (error.response?.status === 401) {
+        // Extract the specific error message from the backend
+        errorMessage = error.response.data?.detail || 'Incorrect email or password';
+        // Clear password field for security
+        setPassword('');
+      } else if (error.response?.data?.detail) {
+        errorMessage = error.response.data.detail;
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      
+      // Set the error state
+      setLoginError(errorMessage);
+      
+      toast({
+        title: 'Login failed',
+        description: errorMessage,
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="login-container">
-      <div className="login-card">
-        <div className="login-header">
-          <h1>POS Login</h1>
-          <p>Enter your credentials to access the Point of Sale system</p>
-        </div>
-
-        <form onSubmit={handleSubmit} className="login-form">
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email"
-              required
-              disabled={isLoading}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <div className="password-input">
-              <input
-                type={showPassword ? 'text' : 'password'}
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                placeholder="Enter your password"
-                required
-                disabled={isLoading}
-              />
-              <button
-                type="button"
-                className="password-toggle"
-                onClick={() => setShowPassword(!showPassword)}
-                disabled={isLoading}
+    <Flex
+      minH="100vh"
+      w="100%"
+      position="fixed"
+      top="0"
+      left="0"
+      align="center"
+      justify="center"
+      bg={useColorModeValue('gray.50', 'gray.900')}
+    >
+      <Container maxW="md" mx="auto" px={4}>
+        <Box
+          bg={boxBg}
+          p={{ base: 8, md: 10 }}
+          rounded="xl"
+          boxShadow="lg"
+          border="1px solid"
+          borderColor={borderColor}
+        >
+          <VStack spacing={8} align="stretch">
+            <VStack spacing={3}>
+              <Heading
+                fontSize={{ base: '2xl', md: '3xl' }}
+                fontWeight="bold"
+                textAlign="center"
+                color={textColor}
               >
-                {showPassword ? '👁️' : '👁️‍🗨️'}
-              </button>
-            </div>
-          </div>
+                POS System Login
+              </Heading>
+              <Text
+                color={textColor}
+                fontSize="lg"
+                textAlign="center"
+                opacity={0.8}
+              >
+                Sign in to access the Point of Sale system
+              </Text>
+            </VStack>
 
-          {error && (
-            <div className="error-message">
-              {error}
-            </div>
-          )}
+            <form onSubmit={handleSubmit}>
+              <VStack spacing={6}>
+                <FormControl isRequired>
+                  <FormLabel color={textColor}>Email</FormLabel>
+                  <Input
+                    type="email"
+                    value={email}
+                    onChange={handleEmailChange}
+                    placeholder="Enter your email"
+                    size="lg"
+                    bg={inputBg}
+                    borderColor={borderColor}
+                  />
+                </FormControl>
 
-          <button
-            type="submit"
-            className="login-button"
-            disabled={isLoading}
-          >
-            {isLoading ? 'Logging in...' : 'Login'}
-          </button>
-        </form>
+                <FormControl isRequired>
+                  <FormLabel color={textColor}>Password</FormLabel>
+                  <InputGroup size="lg">
+                    <Input
+                      type={showPassword ? 'text' : 'password'}
+                      value={password}
+                      onChange={handlePasswordChange}
+                      placeholder="Enter your password"
+                      bg={inputBg}
+                      borderColor={borderColor}
+                    />
+                    <InputRightElement>
+                      <IconButton
+                        aria-label={showPassword ? 'Hide password' : 'Show password'}
+                        icon={showPassword ? <ViewOffIcon /> : <ViewIcon />}
+                        onClick={() => setShowPassword(!showPassword)}
+                        variant="ghost"
+                      />
+                    </InputRightElement>
+                  </InputGroup>
+                </FormControl>
 
-        <div className="login-footer">
-          <p>Point of Sale System</p>
-        </div>
-      </div>
-    </div>
+                {/* Error message display */}
+                {loginError && (
+                  <Box
+                    bg="red.50"
+                    border="1px solid"
+                    borderColor="red.200"
+                    borderRadius="md"
+                    p={3}
+                    color="red.700"
+                    fontSize="sm"
+                  >
+                    {loginError}
+                  </Box>
+                )}
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  fontSize="md"
+                  isLoading={isLoading}
+                  width="full"
+                  colorScheme="blue"
+                >
+                  LOGIN
+                </Button>
+              </VStack>
+            </form>
+
+            <Text color={textColor} textAlign="center" fontSize="md">
+              Don't have an account?{' '}
+              <Link to="/signup">
+                <Text
+                  as="span"
+                  display="inline"
+                  color="blue.500"
+                  fontWeight="semibold"
+                  _hover={{
+                    textDecoration: 'underline',
+                  }}
+                >
+                  Sign up
+                </Text>
+              </Link>
+            </Text>
+          </VStack>
+        </Box>
+      </Container>
+    </Flex>
   );
 };
 
