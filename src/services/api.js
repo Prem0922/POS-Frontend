@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-// Create axios instance for local CRM backend (reusing CRM authentication)
+// Create axios instance for live CRM backend (reusing CRM authentication)
 const api = axios.create({
-  baseURL: 'http://127.0.0.1:8000',
+  baseURL: 'https://crm-n577.onrender.com',
   headers: {
     'Content-Type': 'application/json',
     'x-api-key': 'mysecretkey', // Same API key as CRM
@@ -10,7 +10,7 @@ const api = axios.create({
 });
 
 // Debug: Log the base URL to confirm it's correct
-console.log('POS API Base URL (Local CRM):', api.defaults.baseURL);
+console.log('POS API Base URL (Live CRM):', api.defaults.baseURL);
 
 // Add request interceptor to include auth token
 api.interceptors.request.use(
